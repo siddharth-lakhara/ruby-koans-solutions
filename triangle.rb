@@ -14,6 +14,12 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
+  anySideNegative = (a <= 0 || b <= 0 || c <= 0)
+  sumSidesInvalid = (a+b <= c || b+c<=a || c+a<=b) 
+  if anySideNegative || sumSidesInvalid
+    raise TriangleError
+  end
+
   if (a == b && b == c)
     :equilateral
   elsif (a == b || b == c || a == c)
